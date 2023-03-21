@@ -2,9 +2,9 @@ require 'date'
 
 class Item
   attr_reader :id, :archived
-  attr_accessor :genre, :author, :source, :label,  :publish_date
+  attr_accessor :genre, :author, :source, :label, :publish_date
 
-  def initialize(id, genre, author, source, label, publish_date)
+  def initialize(genre, author, source, label, publish_date)
     @id = rand(1..1000)
     @genre = genre
     @author = author
@@ -24,9 +24,9 @@ class Item
   def move_to_archive
     if can_be_archived?
       @archived = true
-      puts "Item has been moved to the archive."
+      puts 'Item has been moved to the archive.'
     else
-      puts "Item cannot be moved to the archive."
+      puts 'Item cannot be moved to the archive.'
     end
   end
 end
