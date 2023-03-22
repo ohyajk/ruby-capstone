@@ -1,5 +1,5 @@
 require 'json'
-require_relative 'item.rb'
+require_relative 'item'
 
 class MusicAlbum < Item
   attr_accessor :artist, :on_spotify
@@ -13,15 +13,16 @@ class MusicAlbum < Item
   def can_be_archived?
     super && @on_spotify
   end
-    def to_json(*args)
+
+  def to_json(*args)
     {
       'artist' => @artist,
       'on_spotify' => @on_spotify
     }.to_json(*args)
   end
-  
+
   def self.from_json(json)
     data = JSON.parse(json)
-    self.new(data['artist'], data['on_spotify'])
+    new(data['artist'], data['on_spotify'])
   end
 end
