@@ -15,9 +15,9 @@ class App
   end
 
   def run
-    puts '----------------------'
-    puts 'Welcome to the app!'
-    puts '----------------------'
+    puts '**********************'
+    puts 'Welcome Catalog of my things app!'
+    puts '**********************'
     puts 'Please choose an option: [1-10]'
 
     @options.each_with_index do |option, index|
