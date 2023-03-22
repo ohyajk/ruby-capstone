@@ -12,9 +12,9 @@ class Game < Item
 
   def can_be_archived
     if @last_played_at < 2 || super
-      puts 'Game can be archived'
+      true
     else
-      puts 'Game cannot be archived'
+      false
     end
   end
 end

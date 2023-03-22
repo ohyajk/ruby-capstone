@@ -1,97 +1,63 @@
+require_relative 'author'
+require_relative 'create_items'
+require_relative 'list_items'
+require_relative 'game_json'
+require 'json'
+
 class App
+  include NewItem
+  include ListItems
+  include GameData
+
+
   def initialize
-    @options = [
-      'List all books',
-      'List all music albums',
-      'List all games',
-      'List all genres',
-      'List all labels',
-      'List all authors',
-      'Add a book',
-      'Add a music album',
-      'Add a game',
-      'Exit'
-    ]
+    @games = []
+    @authors = [Author.new('Teklay', 'Birhane'), Author.new('Jitender', 'Kumar'),
+    Author.new('Hounda ', 'Mzari')]
+
+    @options = {
+      '1' => 'Create an Item',
+      '2' => 'List all items.',
+      '3' => 'List all genres.',
+      '4' => 'List all labels.',
+      '5' => 'List all authors.',
+      '6' => 'Exit'
+    }
   end
 
   def run
-    puts '**********************'
-    puts 'Welcome Catalog of my things app!'
-    puts '**********************'
-    puts 'Please choose an option: [1-10]'
-
-    @options.each_with_index do |option, index|
-      puts "#{index + 1}. #{option}"
-    end
-    user_input
-  end
-
-  def user_input
-    user_option = gets.chomp.to_i
-    operation(user_option)
-  end
-
-  def operation(user_option)
-    case user_option
-    when 1 then list_all_books
-    when 2 then list_all_music_albums
-    when 3 then list_all_games
-    when 4 then list_all_genres
-    when 5 then list_all_labels
-    when 6 then list_all_authors
-    else operation_two(user_option)
-    end
-  end
-
-  def operation_two(user_option)
-    case user_option
-    when 7 then add_book
-    when 8 then add_music_album
-    when 9 then add_game
-    when 10 then exit_app
-    else
-      puts 'Invalid option'
+    load_game_data
+    puts'Welcome to the Catalog App!'
+    puts '********************************'
+    loop do
+      puts 'Please choose an your option:'
+      @options.each do |key, value|
+        puts "#{key}. #{value}"
+      end
+      option = gets.chomp
+      case option
+      when '1'
+        create_item
+      when '2'
+        list_items
+      when '3'
+        list_genres
+      when '4'
+        list_labels
+      when '5'
+        list_authors
+      when '6'
+        exit
+      else
+        puts 'Invalid option.'
+      end
     end
   end
 
-  def list_all_books
-    # TODO
-  end
-
-  def list_all_music_albums
-    # TODO
-  end
-
-  def list_all_games
-    # TODO
-  end
-
-  def list_all_genres
-    # TODO
-  end
-
-  def list_all_labels
-    # TODO
-  end
-
-  def list_all_authors
-    # TODO
-  end
-
-  def add_book
-    # TODO
-  end
-
-  def add_music_album
-    # TODO
-  end
-
-  def add_game
-    # TODO
-  end
-
-  def exit_app
-    puts 'Thank you for using the app!'
-    exit
+  def exit
+    save_game_data
+    puts 'Thank you for using the Catalog App!'
+    puts '********************************'
+    Kernel.exit
   end
 end
