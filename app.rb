@@ -9,11 +9,10 @@ class App
   include ListItems
   include GameData
 
-
   def initialize
     @games = []
     @authors = [Author.new('Teklay', 'Birhane'), Author.new('Jitender', 'Kumar'),
-    Author.new('Hounda ', 'Mzari')]
+                Author.new('Hounda ', 'Mzari')]
 
     @options = {
       '1' => 'Create an Item',
@@ -27,7 +26,7 @@ class App
 
   def run
     load_game_data
-    puts'Welcome to the Catalog App!'
+    puts 'Welcome to the Catalog App!'
     puts '********************************'
     loop do
       puts 'Please choose an your option:'
