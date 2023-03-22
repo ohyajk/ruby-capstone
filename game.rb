@@ -10,3 +10,11 @@ class Game < Item
         @last_played_at = last_played_at
         @multiplayer = multiplayer
     end
+
+    def can_be_archived
+        if @last_played_at < 2 || super
+            puts "Game can be archived"
+        else
+            puts "Game cannot be archived"
+        end
+    end 
