@@ -1,0 +1,11 @@
+CREATE TABLE music_albums (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  on_spotify BOOLEAN NOT NULL,
+  genre_id INTEGER,
+  FOREIGN KEY (genre_id) REFERENCES genres(id)
+);
+
+CREATE TABLE genres (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL
+);
