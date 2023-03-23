@@ -1,10 +1,10 @@
-require_relative 'date'
+require 'date'
 
 class Item
   attr_reader :id, :archived
   attr_accessor :genre, :author, :source, :label, :publish_date
 
-  def initialize(genre, author, source, label, publish_date)
+  def initialize(publish_date)
     @id = rand(1..1000)
     @genre = genre
     @author = author
