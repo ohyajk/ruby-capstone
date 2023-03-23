@@ -12,13 +12,13 @@ describe Label do
     end
   end
 
-    it 'should have a title' do
+  it 'should have a title' do
     @label.each do |label|
       expect(label.title).to eq('Mega')
     end
   end
 
-    it 'should have a color' do
+  it 'should have a color' do
     @label.each do |label|
       expect(label.color).to eq('red')
     end
@@ -26,10 +26,10 @@ describe Label do
 end
 
 describe Item do
-    it 'it should add an item to the label' do
-        label = Label.new('Mega', 'red')
-        book = Book.new('Mega', true, '2011-09-09')
-        label.add_item(book)
-        expect(label.items).to eq([book])
-    end
-    end
+  it 'it should add an item to the label' do
+    label = Label.new('Mega', 'red')
+    book = Book.new('Mega', true, '2011-09-09')
+    label.add_item(book)
+    expect(label.items).to eq([book])
+  end
+end
