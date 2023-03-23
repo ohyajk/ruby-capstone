@@ -16,7 +16,6 @@ module NewItem
   end
 
   def add_selected_item
-    # @item_options = gets.chomp
     case @item_options
     when '1'
       create_book
