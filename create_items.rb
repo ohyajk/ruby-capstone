@@ -1,6 +1,8 @@
 require_relative 'game'
 require_relative 'author'
 require_relative 'musicalbum'
+require_relative 'book'
+
 module NewItem
   def initialize
     @item_options = '0'
@@ -79,6 +81,29 @@ module NewItem
     genre.add_item(music_album)
     @music_albums << music_album
     puts 'Music Album has been created.'
+    puts '********************************'
+  end
+
+  def label_book
+    list_labels
+    print 'Select the label by number:'
+    label_index = gets.chomp.to_i - 1
+    @labels[label_index]
+  end
+
+  def create_book
+    print 'Who is the publisher of the book?'
+    publisher = gets.chomp
+    print 'Enter the publish date (yyyy-mm-dd):'
+    publish_date = gets.chomp
+    print 'Is it good or bad? [y/n]:'
+    good = gets.chomp.downcase
+    good = good == 'y'
+    book = Book.new(publisher, publish_date, good)
+    label = label_book
+    label.add_item(book)
+    @books.push(book)
+    puts 'Book has been created.'
     puts '********************************'
   end
 end
