@@ -1,5 +1,7 @@
 require_relative 'game'
 require_relative 'musicalbum'
+require_relative 'book'
+
 module ListItems
   def initialize
     @list_options = '0'
@@ -65,4 +67,18 @@ module ListItems
       puts "#{index + 1}. #{genre.name}"
     end
   end
+
+  def list_books
+    puts 'List of your Books!'
+    puts "Your books list is empty." if @books.empty?
+    @books.each_with_index do |book, index|
+      puts "#{index + 1}. #{book.publisher}"
+    end
+  end
+
+  def list_labels
+    puts "\n List of labels: "
+    @labels.each_with_index { |label, index| puts"#{index}) Title: #{label.title} Color: #{label.color}"}
+  end
+
 end
