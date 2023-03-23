@@ -81,5 +81,4 @@ module NewItem
     puts 'Music Album has been created.'
     puts '********************************'
   end
-
 end

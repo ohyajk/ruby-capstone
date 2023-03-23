@@ -65,5 +65,4 @@ module ListItems
       puts "#{index + 1}. #{genre.name}"
     end
   end
-
 end

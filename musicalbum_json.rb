@@ -12,11 +12,7 @@ module MusicAlbumData
   end
 
   def load_music_albums
-    unless File.exist?('json_db/music_album.json')
-      File.open('json_db/music_album.json', 'w') do |f|
-        f.write JSON.pretty_generate([])
-      end
-    end
+    File.write('json_db/music_album.json', JSON.pretty_generate([])) unless File.exist?('json_db/music_album.json')
     JSON.parse(File.read('json_db/music_album.json')).map do |music_album|
       @music_albums << MusicAlbum.new(music_album['name'], music_album['publish_date'], music_album['on_spotify'])
     end
