@@ -3,16 +3,18 @@ require_relative 'create_items'
 require_relative 'list_items'
 require_relative 'game_json'
 require 'json'
-
+require_relative 'musicalbum_json'
 class App
   include NewItem
   include ListItems
   include GameData
-
+  include MusicAlbumData
   def initialize
     @games = []
     @authors = [Author.new('Teklay', 'Birhane'), Author.new('Jitender', 'Kumar'),
-                Author.new('Hounda ', 'Mzari')]
+                Author.new('Houda ', 'Mzari')]
+    @music_albums = []
+    @genres = [Genre.new('Classica music'), Genre.new('Hip hop'), Genre.new('Rap')]
 
     @options = {
       '1' => 'Create an Item',
@@ -25,6 +27,7 @@ class App
   end
 
   def run
+    load_music_albums
     load_game_data
     puts 'Welcome to the Catalog App!'
     puts '********************************'
@@ -55,6 +58,7 @@ class App
 
   def exit
     save_game_data
+    save_music_albums
     puts 'Thank you for using the Catalog App!'
     puts '********************************'
     Kernel.exit

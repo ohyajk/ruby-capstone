@@ -8,12 +8,12 @@ module GameData
                       'multiplayer' => game.multiplayer,
                       'publish_date' => game.publish_date)
     end
-    File.write('storage/game_data.json', JSON.pretty_generate(@game_data))
+    File.write('json_db/game_data.json', JSON.pretty_generate(@game_data))
   end
 
   def load_game_data
-    File.write('storage/game_data.json', JSON.pretty_generate([])) unless File.exist?('storage/game_data.json')
-    @game_data = JSON.parse(File.read('storage/game_data.json'))
+    File.write('json_db/game_data.json', JSON.pretty_generate([])) unless File.exist?('json_db/game_data.json')
+    @game_data = JSON.parse(File.read('json_db/game_data.json'))
     @game_data.each do |game|
       @games.push(Game.new(game['last_played_at'], game['multiplayer'], game['publish_date']))
     end

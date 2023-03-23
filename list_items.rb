@@ -1,5 +1,5 @@
 require_relative 'game'
-
+require_relative 'musicalbum'
 module ListItems
   def initialize
     @list_options = '0'
@@ -47,6 +47,22 @@ module ListItems
     puts 'Select the author by number:'
     @authors.each_with_index do |author, index|
       puts "#{index + 1}. #{author.first_name} #{author.last_name}"
+    end
+  end
+
+  def list_music_albums
+    puts 'List of Music Albums:'
+    puts 'You have no Music Albums.' if @music_albums.empty?
+    @music_albums.each_with_index do |music_album, index|
+      puts "#{index + 1}. #{music_album.name}"
+    end
+  end
+
+  def list_genres
+    puts 'List of Genres:'
+    puts 'You have no Genres.' if @genres.empty?
+    @genres.each_with_index do |genre, index|
+      puts "#{index + 1}. #{genre.name}"
     end
   end
 end
