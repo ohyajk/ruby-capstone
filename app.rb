@@ -15,7 +15,7 @@ class App
 
   def initialize
     @books = []
-    @labels = [Label.new('Love at the end of the day.', 'Blue'),Label.new('The love of my lives.', 'Grey')]
+    @labels = [Label.new('Love at the end of the day.', 'Blue'), Label.new('The love of my lives.', 'Grey')]
     @games = []
     @authors = [Author.new('Teklay', 'Birhane'), Author.new('Jitender', 'Kumar'),
                 Author.new('Houda ', 'Mzari')]

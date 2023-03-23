@@ -106,5 +106,4 @@ module NewItem
     puts 'Book has been created.'
     puts '********************************'
   end
-
 end
