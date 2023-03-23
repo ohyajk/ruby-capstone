@@ -12,7 +12,9 @@ class App
   def initialize
     @games = []
     @authors = [Author.new('Teklay', 'Birhane'), Author.new('Jitender', 'Kumar'),
-                Author.new('Hounda ', 'Mzari')]
+                Author.new('Houda ', 'Mzari')]
+    @music_albums = []
+    @genres= [ Genre.new('Classica music'), Genre.new('Hip hop'), Genre.new('Rap')]
 
     @options = {
       '1' => 'Create an Item',

@@ -1,6 +1,6 @@
 require_relative 'game'
 require_relative 'author'
-
+require_relative 'musicalbum'
 module NewItem
   def initialize
     @item_options = '0'
@@ -58,4 +58,28 @@ module NewItem
     puts 'Game has been created.'
     puts '********************************'
   end
+
+  def genre_music_album
+    list_genres
+    print 'Select the genre by number:'
+    genre_index = gets.chomp.to_i - 1
+    @genres[genre_index]
+  end
+
+  def create_music_album
+    print 'Add your Music Album\'s name:'
+    name = gets.chomp
+    print 'Published date (yyyy-mm-dd): '
+    publish_date = gets.chomp
+    print 'Is it on spotify? [y/n]: '
+    spotify = gets.chomp.downcase
+    spotify = spotify == 'y'
+    music_album = MusicAlbum.new(name, publish_date, spotify)
+    genre = genre_music_album
+    genre.add_item(music_album)
+    @music_albums << music_album
+    puts 'Music Album has been created.'
+    puts '********************************'
+  end
+
 end
