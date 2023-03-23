@@ -4,12 +4,18 @@ require_relative 'list_items'
 require_relative 'game_json'
 require 'json'
 require_relative 'musicalbum_json'
+require_relative 'label'
+require_relative 'books_json'
 class App
   include NewItem
   include ListItems
   include GameData
   include MusicAlbumData
+  include BookData
+
   def initialize
+    @books = []
+    @labels = [Label.new('Love at the end of the day.', 'Blue'),Label.new('The love of my lives.', 'Grey')]
     @games = []
     @authors = [Author.new('Teklay', 'Birhane'), Author.new('Jitender', 'Kumar'),
                 Author.new('Houda ', 'Mzari')]
@@ -27,6 +33,7 @@ class App
   end
 
   def run
+    load_books_data
     load_music_albums
     load_game_data
     puts 'Welcome to the Catalog App!'
@@ -57,6 +64,7 @@ class App
   end
 
   def exit
+    save_books_data
     save_game_data
     save_music_albums
     puts 'Thank you for using the Catalog App!'
