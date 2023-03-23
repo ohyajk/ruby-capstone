@@ -99,7 +99,7 @@ module NewItem
     print 'Is it good or bad? [y/n]:'
     good = gets.chomp.downcase
     good = good == 'y'
-    book = Book.new(publisher, publish_date, good)
+    book = Book.new(publisher, good, publish_date)
     label = label_book
     label.add_item(book)
     @books.push(book)
