@@ -1,8 +1,10 @@
+require_relative 'item'
+
 class Label
   attr_accessor :title, :items, :id, :color
 
-  def initialize(id, title, color)
-    @id = id
+  def initialize(title, color)
+    @id = rand(1..1000)
     @title = title
     @color = color
     @items = []
@@ -10,6 +12,6 @@ class Label
 
   def add_item(item)
     @items.push(item)
-    item.add_label(self)
+    item.label = self
   end
 end
